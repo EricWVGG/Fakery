@@ -68,12 +68,12 @@ public final class Internet: Generator {
   }
 
   public func password(minimumLength: Int = 8, maximumLength: Int = 16) -> String {
-    var temp = lorem.characters(amount: minimumLength)
+    var temp = lorem.characters(minimumLength)
     let diffLength = maximumLength - minimumLength
 
     if diffLength > 0 {
       let diffRandom = Int(arc4random_uniform(UInt32(diffLength + 1)))
-      temp += lorem.characters(amount: diffRandom)
+      temp += lorem.characters(diffRandom)
     }
 
     return temp

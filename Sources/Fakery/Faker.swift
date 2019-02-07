@@ -1,3 +1,5 @@
+import Foundation
+
 public final class Faker {
   public var locale: String {
     didSet {
@@ -19,11 +21,27 @@ public final class Faker {
   public let team: Team
   public let number: Number
   public let bank: Bank
-  public let date: Date
 
   let parser: Parser
 
   // MARK: - Initialization
+    
+  public init(locale: String, localeData: Data) {
+    self.locale = locale
+    parser = Parser(locale: self.locale, localeData: localeData)
+    address = Address(parser: parser)
+    app = App(parser: parser)
+    business = Business(parser: parser)
+    company = Company(parser: parser)
+    commerce = Commerce(parser: parser)
+    internet = Internet(parser: parser)
+    lorem = Lorem(parser: parser)
+    name = Name(parser: parser)
+    phoneNumber = PhoneNumber(parser: parser)
+    team = Team(parser: parser)
+    number = Number()
+    bank = Bank(parser: parser)
+  }
 
   public init(locale: String = Config.defaultLocale) {
     self.locale = locale
@@ -40,6 +58,5 @@ public final class Faker {
     team = Team(parser: parser)
     number = Number()
     bank = Bank(parser: parser)
-    date = Date()
   }
 }
