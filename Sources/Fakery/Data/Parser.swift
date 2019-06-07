@@ -24,6 +24,15 @@ public final class Parser {
     }
   }
 
+  public init(locale: String, localeData: Data) {
+    self.locale = locale
+    provider = Provider()
+    let parsedData = try? JSONSerialization.jsonObject(with: localeData, options: .allowFragments)
+    let json = parsedData as? [String: Any]
+    
+    data[locale] = json?[locale]
+  }
+  
   // MARK: - Parsing
 
   public func fetch(_ key: String) -> String {
