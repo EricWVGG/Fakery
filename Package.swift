@@ -4,25 +4,18 @@
 import PackageDescription
 
 let package = Package(
-    name: "FakeryTest",
+    name: "Fakery",
     products: [
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.
-        .library(
-            name: "FakeryTest",
-            targets: ["FakeryTest"]),
+        .library(name: "Fakery", targets: ["Fakery"])
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-//        .package(url: "https://github.com/EricWVGG/Fakery.git", from: "4.0.1")
+    // Test dependencies
+    .package(url: "https://github.com/Quick/Quick.git", from: "2.0.0"),
+    .package(url: "https://github.com/Quick/Nimble.git", from: "8.0.0"),
+
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
-        .target(
-            name: "FakeryTest",
-            dependencies: []),
-        .testTarget(
-            name: "FakeryTestTests",
-            dependencies: ["FakeryTest"]),
+      .target(name: "Fakery"),
+      .testTarget(name: "FakeryTests", dependencies: ["Fakery","Quick", "Nimble"], path: "Tests/Fakery")
     ]
 )
