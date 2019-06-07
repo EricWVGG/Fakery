@@ -1,3 +1,5 @@
+import Foundation
+
 public final class Faker {
   public var locale: String {
     didSet {
@@ -56,4 +58,30 @@ public final class Faker {
     vehicle = Vehicle(parser: parser)
     ham = Ham(parser: parser)
   }
+
+  public init(locale: String, localeData: Data) {
+    self.locale = locale
+    parser = Parser(locale: locale, localeData: localeData)
+    address = Address(parser: parser)
+    app = App(parser: parser)
+    zelda = Zelda(parser: parser)
+    business = Business(parser: parser)
+    cat = Cat(parser: parser)
+    company = Company(parser: parser)
+    commerce = Commerce(parser: parser)
+    gender = Gender(parser: parser)
+    internet = Internet(parser: parser)
+    lorem = Lorem(parser: parser)
+    name = Name(parser: parser)
+    phoneNumber = PhoneNumber(parser: parser)
+    team = Team(parser: parser)
+    number = Number()
+    bank = Bank(parser: parser)
+    date = Date()
+    car = Car(parser: parser)
+    programmingLanguage = ProgrammingLanguage(parser: parser)
+    vehicle = Vehicle(parser: parser)
+    ham = Ham(parser: parser)
+  }
+
 }
