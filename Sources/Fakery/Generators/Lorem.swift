@@ -55,10 +55,10 @@ public final class Lorem: Generator {
     }
     
     public func sentence(wordsAmount: Int = 4) -> String {
-        return randomSentence(wordsAmount: wordsAmount.convertToRange())
+        return sentence(wordsAmount: wordsAmount.convertToRange())
     }
     
-    public func randomSentence(wordsAmount: Range<Int> = 5..<10) -> String {
+    public func sentence(wordsAmount: Range<Int>) -> String {
         var sentence = randomWords(amount: wordsAmount) + "."
         sentence.replaceSubrange(sentence.startIndex...sentence.startIndex,
                                  with: String(sentence[sentence.startIndex]).capitalized)
@@ -66,36 +66,36 @@ public final class Lorem: Generator {
     }
     
     public func sentences(amount: Int = 3, wordsAmount: Int = 4) -> String {
-        return randomSentences(amount: amount.convertToRange(), wordsAmount: wordsAmount.convertToRange())
+        return sentences(amount: amount.convertToRange(), wordsAmount: wordsAmount.convertToRange())
     }
     
-    public func randomSentences(amount: Range<Int> = 1..<4, wordsAmount: Range<Int> = 5..<10) -> String {
+    public func sentences(amount: Range<Int>, wordsAmount: Range<Int>) -> String {
         var sentences: [String] = []
         
         for _ in 0..<amount.randomElement()! {
-            sentences.append(randomSentence(wordsAmount: wordsAmount))
+            sentences.append(sentence(wordsAmount: wordsAmount))
         }
         
         return sentences.joined(separator: " ")
     }
     
     public func paragraph(sentencesAmount: Int = 3, wordsAmount: Int = 4) -> String {
-        return randomSentences(amount: sentencesAmount.convertToRange(), wordsAmount: wordsAmount.convertToRange())
+        return sentences(amount: sentencesAmount.convertToRange(), wordsAmount: wordsAmount.convertToRange())
     }
     
-    public func randomParagraph(sentencesAmount: Range<Int> = 1..<4, wordsAmount: Range<Int> = 5..<10) -> String {
-        return randomSentences(amount: sentencesAmount, wordsAmount: wordsAmount)
+    public func paragraph(sentencesAmount: Range<Int>, wordsAmount: Range<Int>) -> String {
+        return sentences(amount: sentencesAmount, wordsAmount: wordsAmount)
     }
     
     public func paragraphs(amount: Int = 3, sentencesAmount: Int = 3, wordsAmount: Int = 4) -> String {
-        return randomParagraphs(amount: amount.convertToRange(), sentencesAmount: sentencesAmount.convertToRange(), wordsAmount: wordsAmount.convertToRange())
+        return paragraphs(amount: amount.convertToRange(), sentencesAmount: sentencesAmount.convertToRange(), wordsAmount: wordsAmount.convertToRange())
     }
     
-    public func randomParagraphs(amount: Range<Int> = 1..<4, sentencesAmount: Range<Int> = 1..<4, wordsAmount: Range<Int> = 5..<10) -> String {
+    public func paragraphs(amount: Range<Int>, sentencesAmount: Range<Int>, wordsAmount: Range<Int>) -> String {
         var paragraphs: [String] = []
         
         for _ in 0..<amount.randomElement()! {
-            paragraphs.append(randomParagraph(sentencesAmount: sentencesAmount, wordsAmount: wordsAmount))
+            paragraphs.append(paragraph(sentencesAmount: sentencesAmount, wordsAmount: wordsAmount))
         }
         
         return paragraphs.joined(separator: "\n")
