@@ -5,11 +5,19 @@ import Nimble
 final class CatSpec: QuickSpec {
   override func spec() {
     describe("Cat") {
+<<<<<<< HEAD
       var cat: Cat!
 
       beforeEach {
         let parser = Parser(locale: "en-TEST")
         cat = Cat(parser: parser)
+=======
+      var cat: Faker.Cat!
+
+      beforeEach {
+        let parser = Parser(locale: "en-TEST")
+        cat = Faker.Cat(parser: parser)
+>>>>>>> 92d714d5b6626f629e3dccc79963f3ca8b1678d6
       }
 
       describe("#name") {

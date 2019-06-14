@@ -5,11 +5,19 @@ import Nimble
 final class VehicleSpec: QuickSpec {
   override func spec() {
     describe("Vehicle") {
+<<<<<<< HEAD
       var vehicle: Vehicle!
 
       beforeEach {
         let parser = Parser(locale: "en-TEST")
         vehicle = Vehicle(parser: parser)
+=======
+      var vehicle: Faker.Vehicle!
+
+      beforeEach {
+        let parser = Parser(locale: "en-TEST")
+        vehicle = Faker.Vehicle(parser: parser)
+>>>>>>> 92d714d5b6626f629e3dccc79963f3ca8b1678d6
       }
 
       describe("#manufacture") {
