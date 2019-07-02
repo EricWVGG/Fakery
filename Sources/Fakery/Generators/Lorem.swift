@@ -1,6 +1,5 @@
 import Foundation
 
-<<<<<<< HEAD
 /*
  Rather than have two generators like sentences(amount:5) and sentences(amount:1..<5), and
  repeating all the generator logic in both places, we're only doing logic in the range version.
@@ -16,14 +15,9 @@ extension Int {
 }
 
 public final class Lorem: Generator {
-=======
-extension Faker {
-  public final class Lorem: Generator {
->>>>>>> cc9df445328124b7f910771d60f4482f1ed8bdce
     public func word() -> String {
-      return generate("lorem.words")
+        return generate("lorem.words")
     }
-<<<<<<< HEAD
     
     public func words(amount: Int = 3) -> String {
         return randomWords(amount: amount.convertToRange())
@@ -37,26 +31,9 @@ extension Faker {
         }
         
         return words.joined(separator: " ")
-=======
-
-    public func words(amount: Int = 3) -> String {
-      var words: [String] = []
-
-      for _ in 0..<amount {
-        #if swift(>=4.2)
-          let char = Character(UnicodeScalar(Int.random(in: 0..<Int.max) % (122-97) + 97)!)
-        #else
-          let char = Character(UnicodeScalar(arc4random() % (122-97) + 97)!)
-        #endif
-        chars.append(char)
-      }
-
-      return words.joined(separator: " ")
->>>>>>> cc9df445328124b7f910771d60f4482f1ed8bdce
     }
-
+    
     public func character() -> String {
-<<<<<<< HEAD
         return characters(amount: 1)
     }
     
@@ -97,28 +74,10 @@ extension Faker {
         
         for _ in 0..<amount.randomElement()! {
             sentences.append(randomSentence(wordsAmount: wordsAmount))
-=======
-      return characters(amount: 1)
-    }
-
-    public func characters(amount: Int = 255) -> String {
-      var chars = ""
-
-      if amount > 0 {
-        for _ in 0..<amount {
-          #if swift(>=4.2)
-          let char = Character(UnicodeScalar(Int.random(in: 0..<Int.max) % (122 - 97) + 97)!)
-          #else
-          let char = Character(UnicodeScalar(arc4random() % (122-97) + 97)!)
-          #endif
-          chars.append(char)
->>>>>>> cc9df445328124b7f910771d60f4482f1ed8bdce
         }
-      }
-
-      return chars
+        
+        return sentences.joined(separator: " ")
     }
-<<<<<<< HEAD
     
     public func paragraph(sentencesAmount: Int = 3, wordsAmount: Int = 4) -> String {
         return randomSentences(amount: sentencesAmount.convertToRange(), wordsAmount: wordsAmount.convertToRange())
@@ -142,38 +101,4 @@ extension Faker {
         return paragraphs.joined(separator: "\n")
     }
     
-=======
-
-    public func sentence(wordsAmount: Int = 4) -> String {
-      var sentence = words(amount: wordsAmount) + "."
-      sentence.replaceSubrange(sentence.startIndex...sentence.startIndex,
-                               with: String(sentence[sentence.startIndex]).capitalized)
-      return sentence
-    }
-
-    public func sentences(amount: Int = 3) -> String {
-      var sentences: [String] = []
-
-      for _ in 0..<amount {
-        sentences.append(sentence())
-      }
-
-      return sentences.joined(separator: " ")
-    }
-
-    public func paragraph(sentencesAmount: Int = 3) -> String {
-      return sentences(amount: sentencesAmount)
-    }
-
-    public func paragraphs(amount: Int = 3) -> String {
-      var paragraphs: [String] = []
-
-      for _ in 0..<amount {
-        paragraphs.append(paragraph())
-      }
-
-      return paragraphs.joined(separator: "\n")
-    }
-  }
->>>>>>> cc9df445328124b7f910771d60f4482f1ed8bdce
 }

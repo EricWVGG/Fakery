@@ -12,11 +12,7 @@ public final class Provider {
       translation = translationData
     } else {
       let bundle = Bundle(for: Provider.self)
-<<<<<<< HEAD
       
-=======
-
->>>>>>> cc9df445328124b7f910771d60f4482f1ed8bdce
       var path = bundle.path(forResource: locale,
                              ofType: Config.pathExtension,
                              inDirectory: Config.dirPath) ??
