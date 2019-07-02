@@ -1,14 +1,15 @@
 import Quick
 import Nimble
+import Foundation
 @testable import Fakery
 
 final class DateSpec: QuickSpec {
   override func spec() {
     describe("Date") {
-      var date: Fakery.Date!
+      var date: Faker.Date!
 
       beforeEach {
-        date = Date()
+        date = Faker.Date()
       }
 
       describe("#between") {

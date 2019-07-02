@@ -25,10 +25,24 @@ public final class Faker {
   public let number: Number
   public let bank: Bank
   public let date: Date
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+  public let hobbit: Hobbit
+>>>>>>> 92d714d5b6626f629e3dccc79963f3ca8b1678d6
+>>>>>>> cc9df445328124b7f910771d60f4482f1ed8bdce
   public let car: Car
   public let programmingLanguage: ProgrammingLanguage
   public let vehicle: Vehicle
   public let ham: Ham
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+  public let house: House
+>>>>>>> 92d714d5b6626f629e3dccc79963f3ca8b1678d6
+>>>>>>> cc9df445328124b7f910771d60f4482f1ed8bdce
 
   let parser: Parser
 
@@ -40,6 +54,10 @@ public final class Faker {
     address = Address(parser: parser)
     app = App(parser: parser)
     zelda = Zelda(parser: parser)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> cc9df445328124b7f910771d60f4482f1ed8bdce
     business = Business(parser: parser)
     cat = Cat(parser: parser)
     company = Company(parser: parser)
@@ -65,6 +83,11 @@ public final class Faker {
     address = Address(parser: parser)
     app = App(parser: parser)
     zelda = Zelda(parser: parser)
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 92d714d5b6626f629e3dccc79963f3ca8b1678d6
+>>>>>>> cc9df445328124b7f910771d60f4482f1ed8bdce
     business = Business(parser: parser)
     cat = Cat(parser: parser)
     company = Company(parser: parser)
@@ -78,10 +101,24 @@ public final class Faker {
     number = Number()
     bank = Bank(parser: parser)
     date = Date()
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    hobbit = Hobbit(parser: parser)
+>>>>>>> 92d714d5b6626f629e3dccc79963f3ca8b1678d6
+>>>>>>> cc9df445328124b7f910771d60f4482f1ed8bdce
     car = Car(parser: parser)
     programmingLanguage = ProgrammingLanguage(parser: parser)
     vehicle = Vehicle(parser: parser)
     ham = Ham(parser: parser)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    house = House(parser: parser)
+>>>>>>> 92d714d5b6626f629e3dccc79963f3ca8b1678d6
+>>>>>>> cc9df445328124b7f910771d60f4482f1ed8bdce
   }
 
 }
