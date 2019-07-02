@@ -23,30 +23,16 @@ public final class Parser {
       loadData(forLocale: Config.defaultLocale)
     }
   }
+
+  public init(locale: String, localeData: Data) {
+    self.locale = locale
+    provider = Provider()
+    let parsedData = try? JSONSerialization.jsonObject(with: localeData, options: .allowFragments)
+    let json = parsedData as? [String: Any]
     
-    public init(locale: String, localeData: Data) {
-      self.locale = locale
-      provider = Provider()
-        let parsedData = try? JSONSerialization.jsonObject(with: localeData, options: .allowFragments)
-        let json = parsedData as? [String: Any]
-
-        data[locale] = json?[locale]
-    }
-
-  // MARK: - Data loading
-
-  private func loadData(forLocale locale: String) {
-    guard let localeData = provider.dataForLocale(locale),
-        let parsedData = try? JSONSerialization.jsonObject(with: localeData, options: .allowFragments),
-        let json = parsedData as? [String: Any],
-        let localeJson = json[locale] else {
-            print("JSON file for '\(locale)' locale was not found.")
-            return
-    }
-    
-    data[locale] = localeJson
+    data[locale] = json?[locale]
   }
-
+  
   // MARK: - Parsing
 
   public func fetch(_ key: String) -> String {
@@ -83,13 +69,14 @@ public final class Parser {
 
   func parse(_ template: String, forSubject subject: String) -> String {
     var text = ""
-    let string = template as NSString
+    let string = NSString(string: template)
     var regex: NSRegularExpression
 
     do {
       try regex = NSRegularExpression(pattern: "(\\(?)#\\{([A-Za-z]+\\.)?([^\\}]+)\\}([^#]+)?",
                                       options: .caseInsensitive)
-      let matches = regex.matches(in: string as String,
+
+      let matches = regex.matches(in: template,
         options: .reportCompletion,
         range: NSRange(location: 0, length: string.length))
 
@@ -164,4 +151,17 @@ public final class Parser {
     return subject
   }
 
+  // MARK: - Data loading
+
+  private func loadData(forLocale locale: String) {
+    guard let localeData = provider.dataForLocale(locale),
+      let parsedData = try? JSONSerialization.jsonObject(with: localeData, options: .allowFragments),
+      let json = parsedData as? [String: Any],
+      let localeJson = json[locale] else {
+        print("JSON file for '\(locale)' locale was not found.")
+        return
+    }
+
+    data[locale] = localeJson
+  }
 }
